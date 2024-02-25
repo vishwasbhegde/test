@@ -28,28 +28,29 @@
 </div>
 
 <script>
-if ('getBattery' in navigator) {
-    navigator.getBattery().then(function(battery) {
-        updateBatteryStatus(battery);
+// Function to update battery status
+function updateBattery() {
+    if ('getBattery' in navigator) {
+        navigator.getBattery().then(function(battery) {
+            var batteryElement = document.getElementById('battery');
+            var batteryLevel = battery.level * 100;
+            batteryElement.textContent = 'Battery Level: ' + batteryLevel.toFixed(2) + '%';
 
-        battery.addEventListener('levelchange', function() {
-            updateBatteryStatus(battery);
+            // Update progress bar
+            var progressBar = document.getElementById('battery-progress');
+            progressBar.style.width = batteryLevel + '%';
+            progressBar.setAttribute('aria-valuenow', batteryLevel);
         });
-    });
-
-    function updateBatteryStatus(battery) {
-        var batteryElement = document.getElementById('battery');
-        var batteryLevel = battery.level * 100;
-        batteryElement.textContent = 'Battery Level: ' + batteryLevel.toFixed(2) + '%';
-
-        // Update progress bar
-        var progressBar = document.getElementById('battery-progress');
-        progressBar.style.width = batteryLevel + '%';
-        progressBar.setAttribute('aria-valuenow', batteryLevel);
+    } else {
+        document.getElementById('battery').textContent = 'Battery Status API not supported';
     }
-} else {
-    document.getElementById('battery').textContent = 'Battery Status API not supported';
 }
+
+// Call the function initially
+updateBattery();
+
+// Update battery status every 2 minutes
+setInterval(updateBattery, 120000); // 2 minutes in milliseconds
 </script>
 
 <!-- Bootstrap Icons -->
