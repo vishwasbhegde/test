@@ -14,7 +14,11 @@
         <div class="col-6">
             <div class="card text-center">
                 <div class="card-header">
-                    <i class="bi bi-battery"></i> Battery Status
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-battery" viewBox="0 0 16 16">
+                        <path d="M2.5 7.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-1z"/>
+                        <path d="M.5 8.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-3z"/>
+                        <path d="M11.473 4.473A.25.25 0 0 0 11.228 4H2.773a.25.25 0 0 0-.245.316l.5 2a.25.25 0 0 0 .245.184h7.455a.25.25 0 0 0 .245-.184l.5-2a.25.25 0 0 0-.245-.316z"/>
+                    </svg> Battery Status
                 </div>
                 <div class="card-body">
                     <h5 class="card-title" id="battery">Checking battery status...</h5>
@@ -45,6 +49,7 @@ updateBattery();
 setInterval(updateBattery, 120000); // 2 minutes in milliseconds
 </script>
 
+<!-- Bootstrap Icons -->
 <!-- Bootstrap Icons -->
 <script src="https://unpkg.com/bootstrap-icons@1.8.1/font/bootstrap-icons.css"></script>
 
