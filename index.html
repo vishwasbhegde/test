@@ -201,7 +201,7 @@ function checkTime() {
     var hours = now.getHours();
     var minutes = now.getMinutes();
 
-    if (hours === 18 && minutes >= 49 && minutes <= 59 && shakeCount < 10) {
+    if (hours === 11 && minutes >= 00 && minutes <= 30 && shakeCount < 10) {
         // Apply animation to the alert icon
         var alertIcon = document.querySelector('.alert-icon');
         alertIcon.classList.add('shake');
