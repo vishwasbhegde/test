@@ -12,7 +12,7 @@
     body{
         background-color: black;
     }
-    #clock{
+    #clock, #battery{
         color: white;
     }
     .bg{
@@ -32,6 +32,9 @@
     }
     div{
         font-size: 25px;  
+    }
+    .rightDiv{
+        width: 30%;
     }
 </style>
 
@@ -57,18 +60,23 @@
 
             <div class="d-flex flex-wrap justify-content-center mt-2 bg badge">
                 <div id="clock"></div>
-                </div>
-                <br>
-            <div class="d-flex flex-wrap justify-content-center mt-2 bg2 badge">
-                <span style="padding: 4px;font-size: 10px;" class="badge text-bg-secondary">Secondary</span>
+            </div>
 
-                    <div id="clock2"></div>
+            <br>
+
+            <div class="d-flex flex-wrap justify-content-center mt-2 bg2 badge">
+                <span style="padding: 4px;font-size: 10px;" class="badge text-bg-secondary">Austin</span>
+                <div id="clock2"></div>
             </div>
             
         </div>
         
 
-        <div class="divs">
+        <div class="rightDiv"><br>
+            <div class="align-items-center" role="alert">
+                <div class="alert-icon">🔔</div> <br>LOOKERSTUDIO
+                
+            </div>
            
         </div>
 
@@ -162,6 +170,33 @@ function updateAustinTime() {
 setInterval(updateAustinTime, 1000);
 
 
+
+// ----------------------------
+// reminder
+var shakeCount = 0; // Initialize shake count
+
+function checkTime() {
+    var now = new Date();
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+
+    if (hours === 18 && minutes >= 49 && minutes <= 59 && shakeCount < 10) {
+        // Apply animation to the alert icon
+        var alertIcon = document.querySelector('.alert-icon');
+        alertIcon.classList.add('shake');
+        
+        // Increment shake count
+        shakeCount++;
+
+        // Remove animation class after 0.5 second
+        setTimeout(function() {
+            alertIcon.classList.remove('shake');
+        }, 500); // 0.5 second in milliseconds
+    }
+}
+
+// Call checkTime every second
+setInterval(checkTime, 1000); // Check every second
     </script>
 </body>
 </html>
